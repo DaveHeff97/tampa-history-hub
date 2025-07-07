@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Tampa's historical sites and submit your own. A community hub for the Cigar City's heritage.">
+  <meta name="keywords" content="Tampa history, Tampa historical sites, Ybor City, Tampa Theatre, Cigar City, Tampa Bay">
+  <meta name="author" content="[Your Name]">
+  <title>Tampa History Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { scroll-behavior: smooth; }
+    .map-container { height: 300px; }
+    .site-card { transition: transform 0.3s; }
+    .site-card:hover { transform: translateY(-5px); }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-teal-600 text-white py-6 sticky top-0 shadow-md z-10">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Tampa History Hub</h1>
+      <p class="mt-2">Preserving the Cigar City’s Heritage</p>
+      <nav class="mt-4">
+        <a href="#home" class="mx-2 hover:underline">Home</a>
+        <a href="#sites" class="mx-2 hover:underline">Historical Sites</a>
+        <a href="#submit" class="mx-2 hover:underline">Submit a Site</a>
+        <a href="#map" class="mx-2 hover:underline">Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <section id="home" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Discover Tampa’s History</h2>
+      <p class="text-gray-700">Welcome to Tampa History Hub, your source for exploring and sharing Tampa’s historical sites. From Ybor City’s cigar factories to the iconic Tampa Theatre, dive into the Cigar City’s past and contribute your own discoveries.</p>
+    </section>
+
+    <!-- Historical Sites Section -->
+    <section id="sites" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Historical Sites in Tampa</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="site-card bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold">Ybor City Historic District</h3>
+          <p class="text-gray-600 mt-2">Founded by Cuban, Spanish, and Italian immigrants, Ybor City is the heart of Tampa’s cigar-making history.</p>
+          <p class="text-gray-500 mt-2 text-sm">Address: 1800 E 8th Ave, Tampa, FL 33605</p>
+          <a href="https://en.wikipedia.org/wiki/Ybor_City" target="_blank" class="text-teal-600 hover:underline">Learn More</a>
+        </div>
+        <div class="site-card bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold">Tampa Theatre</h3>
+          <p class="text-gray-600 mt-2">A 1926 atmospheric theater known for its ornate design and cultural significance.</p>
+          <p class="text-gray-500 mt-2 text-sm">Address: 711 N Franklin St, Tampa, FL 33602</p>
+          <a href="https://tampatheatre.org" target="_blank" class="text-teal-600 hover:underline">Learn More</a>
+        </div>
+        <div class="site-card bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold">Fort Brooke</h3>
+          <p class="text-gray-600 mt-2">The site of Tampa’s first military fort, established in 1824, marking the city’s origins.</p>
+          <p class="text-gray-500 mt-2 text-sm">Address: 600 Ashley Dr, Tampa, FL 33602</p>
+          <a href="https://en.wikipedia.org/wiki/Fort_Brooke" target="_blank" class="text-teal-600 hover:underline">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Submission Form -->
+    <section id="submit" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Submit a Historical Site</h2>
+      <p class="text-gray-700 mb-4">Know a hidden gem in Tampa’s history? Share it with our community!</p>
+      <form action="submit.php" method="POST" class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700">Your Name</label>
+          <input type="text" id="name" name="name" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label for="site_name" class="block text-gray-700">Site Name</label>
+          <input type="text" id="site_name" name="site_name" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label for="address" class="block text-gray-700">Address</label>
+          <input type="text" id="address" name="address" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label for="description" class="block text-gray-700">Description</label>
+          <textarea id="description" name="description" class="w-full p-2 border rounded" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="bg-teal-600 text-white py-2 px-4 rounded hover:bg-teal-700">Submit Site</button>
+      </form>
+      <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <p class="text-green-600 mt-4">Thank you! Your site has been submitted.</p>
+      <?php endif; ?>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Tampa Historical Map</h2>
+      <div class="map-container bg-gray-200 rounded-lg">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.672103687614!2d-82.45717768495368!3d27.950575982697974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c4b3e7e6b7b9%3A0x5e6e6a6e6a6a6a6a!2sTampa%2C%20FL!5e0!3m2!1sen!2sus!4v1696451234567!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-teal-600 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>Contact: info@tampahistory.rf.gd | © 2025 Tampa History Hub</p>
+      <p>Built by [Your Name]</p>
+    </div>
+  </footer>
+
+  <!-- Smooth Scroll JavaScript -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
